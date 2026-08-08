@@ -1,0 +1,18 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Git",
+		"LSP",
+		"Package Control",
+		"PolyOS-Edi-for-Sublime-Text",
+		"Transparency"
+	],
+	"repositories":
+	[
+		"https://github.com/INTxK/PolyOS-Edi-for-Sublime-Text"
+	]
+}

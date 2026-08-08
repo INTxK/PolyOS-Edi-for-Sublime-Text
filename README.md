@@ -1,14 +1,30 @@
 # PolyOS Editor for Sublime Text
 
-> **v.3.2.0** — Updated 2026-08-08
+> **v.3.3.0** — Updated 2026-08-08
 
-A single package that bundles the PolyOS editor suite for Sublime Text 4:
+A single package that bundles the PolyOS editor suite for Sublime Text 4,
+including keybindings, shared preferences, and an auto-sync plugin for your
+per-device `Packages/User` profile:
 
 | Sub-package | What it ships |
 | ----------- | ------------- |
 | **PolyMark** | Custom syntax + color scheme for `.md`, `.txt` and `.pm`. Highlights dates, to-dos, tags, statuses, filenames and more. |
 | **PolyOS Editor Dark** | UI theme (`PolyOS Editor Dark.sublime-theme` + `assets/`). Reads the active color scheme's `accent`/kind hooks so PolyMark and ProseMode re-tint the UI chrome automatically. |
 | **ProseMode** | Focused monochrome color scheme for distraction-free writing. |
+
+## Automatic updates
+
+Every change is delivered through Package Control: when a new version is tagged
+in this repository, the installed package upgrades itself (checked at startup
+and every 4 hours by default). No terminal or sync scripts required.
+
+The bundled **auto-sync plugin** (`polyos_auto_sync.py`) keeps the parts
+Package Control can't manage — your `Packages/User` platform preferences and
+the `Package Control.sublime-settings` baseline — in sync across devices. It
+applies the package's `profile/` folder to `Packages/User` at startup, every 4
+hours, or on demand via `PolyOS: Sync Profile Now`. `Package Control
+.sublime-settings` is merged (never clobbered), so packages you installed
+yourself are preserved.
 
 ## Install via Package Control
 
@@ -100,6 +116,12 @@ extension point — are documented in the **PARAMETERS** sections at the top of
 ├── ProseMode.sublime-color-scheme       Focused writing color scheme
 ├── PolyOS Editor Dark.sublime-theme     UI theme
 ├── assets/                              Theme assets (2x PNGs)
+├── Default (OSX|Windows).sublime-keymap F5/F6/F7 + tab bindings
+├── Preferences.sublime-settings         Shared cross-platform preferences
+├── *.sublime-settings                   Per-syntax settings (JSON, Plain Text, ...)
+├── prose_toggles.py / typewriter_center.py  Keybinding command implementations
+├── polyos_auto_sync.py                  User-profile auto-sync plugin
+├── profile/                             Applied into Packages/User by the plugin
 ├── Examples.md                          Interactive feature reference
 ├── Instructions.md                      Setup & customization guide
 └── LICENSE                              MIT License

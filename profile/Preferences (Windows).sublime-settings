@@ -1,0 +1,12 @@
+{
+  // Windows-only preferences (loaded only on Windows). Applied into
+  // Packages/User/ by the package's auto-sync plugin, so they layer on top of
+  // the shared Packages/PolyOS-Edi-for-Sublime-Text/Preferences.sublime-settings.
+  // Keys defined here must NOT be redefined in the shared Preferences,
+  // otherwise the platform value would be overridden.
+  //
+  // font_options extends the shared ["dlig", "calt"] with Windows-specific
+  // font rendering flags. hardware_acceleration enables the OpenGL renderer.
+  "font_options": ["dlig", "calt", "directwrite", "subpixel_antialias"],
+  "hardware_acceleration": "opengl"
+}
