@@ -46,11 +46,26 @@ def _merge_package_control(profile):
     for key in _AUTHORED_KEYS:
         additions = profile.get(key, [])
         current = list(existing.get(key, []))
-        for item in additions:
-            if item not in current:
-                current.append(item)
+        if not current and additions:
+            # Package Control clears installed_packages during its startup
+            # bootstrap; restore the baseline so managed packages stay
+            # installed and upgradeable.
+            current = list(additions)
+        else:
+            for item in additions:
+                if item not in current:
+                    current.append(item)
         merged[key] = current
     return merged
+
+
+def _ensure_package_control_baseline():
+    try:
+        content = sublime.load_resource(
+            PROFILE_DIR + "Package Control.sublime-settings")
+    except OSError:
+        return
+    _apply_profile_file("Package Control.sublime-settings", content)
 
 
 def _merge_user_preferences(profile):
@@ -71,8 +86,15 @@ def _apply_profile_file(name, content):
         except ValueError:
             print("[PolyOS] profile: invalid Package Control.sublime-settings, skipped")
             return False
+        path = _user_path(name)
+        existing = _load_json(path) or {}
         merged = _merge_package_control(profile)
-        ok = _write_json(_user_path(name), merged)
+        if merged == existing:
+            return True
+        ok = _write_json(path, merged)
+        if ok:
+            print("[PolyOS] profile: Package Control baseline ensured")
+        return ok
     elif name == "Preferences.sublime-settings":
         try:
             profile = sublime.decode_value(content)
@@ -87,6 +109,11 @@ def _apply_profile_file(name, content):
 
 
 def apply_profile(force=False):
+    # Always keep the Package Control baseline in place. Package Control can
+    # wipe installed_packages during its startup bootstrap, so re-assert on
+    # every check (the union merge is idempotent and only writes on change).
+    _ensure_package_control_baseline()
+
     try:
         manifest = sublime.decode_value(
             sublime.load_resource(PROFILE_DIR + MANIFEST_NAME))
@@ -106,6 +133,8 @@ def apply_profile(force=False):
     applied = []
     failed = []
     for name in manifest.get("files", []):
+        if name == "Package Control.sublime-settings":
+            continue
         try:
             content = sublime.load_resource(PROFILE_DIR + name)
         except OSError:

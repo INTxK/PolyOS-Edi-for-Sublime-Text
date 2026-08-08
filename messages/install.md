@@ -1,21 +1,19 @@
-## PolyOS Editor v3.2.0 — installed
+# PolyOS Editor for Sublime Text
 
-Thank you for installing PolyOS Editor for Sublime Text. It is free and open
-source (MIT). The package bundles three sub-packages:
+Installed. The PolyOS Editor bundle (PolyMark syntax + color scheme, ProseMode,
+and PolyOS Editor Dark UI theme) ships as a single Package Control package.
 
-- **PolyMark** — syntax + color scheme for `.md`, `.txt` and `.pm`.
-- **PolyOS Editor Dark** — UI theme.
-- **ProseMode** — focused monochrome color scheme for writing.
+Your per-device `Packages/User` profile is kept in sync automatically by the
+bundled auto-sync plugin.
 
-To get started:
+## Keybindings
 
-- Open any `.md`, `.txt` or `.pm` file — PolyMark selects itself as the syntax.
-- Then run `UI: Select Color Scheme > PolyMark` from the command palette
-  (`Ctrl+Shift+P` / `Cmd+Shift+P`).
-- Enable the theme via `Preferences > Theme > PolyOS Editor Dark`.
+- `F5` — toggle distraction-free mode
+- `F6` — toggle spell check, status bar, and menu bar
+- `F7` — cycle between the PolyMark and ProseMode color schemes
 
-Everything works out of the box. For the full look, install the JetBrains Mono
-font and enable the `dlig` font option so `->` renders as a ligature arrow
-(see `Instructions.md`).
+## Getting started
 
-Open `Examples.md` with PolyMark active for an interactive tour of every rule.
+1. Open a `.md`, `.txt` or `.pm` file — PolyMark selects itself.
+2. `Cmd+Shift+P` → `UI: Select Color Scheme > PolyMark` (or `ProseMode`).
+3. `Preferences > Theme > PolyOS Editor Dark` to enable the UI theme.
