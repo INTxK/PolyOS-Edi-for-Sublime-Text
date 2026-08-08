@@ -1,6 +1,6 @@
 # PolyOS Editor for Sublime Text
 
-> **v.3.3.3** — Updated 2026-08-08
+> **v.3.3.4** — Updated 2026-08-08
 
 A single package that bundles the PolyOS editor suite for Sublime Text 4,
 including keybindings, shared preferences, and an auto-sync plugin for your
