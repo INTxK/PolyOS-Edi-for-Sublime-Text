@@ -1,6 +1,6 @@
 # PolyOS Editor for Sublime Text
 
-> **v.3.3.1** — Updated 2026-08-08
+> **v.3.3.2** — Updated 2026-08-08
 
 A single package that bundles the PolyOS editor suite for Sublime Text 4,
 including keybindings, shared preferences, and an auto-sync plugin for your
@@ -124,7 +124,7 @@ extension point — are documented in the **PARAMETERS** sections at the top of
 ├── Default (OSX|Windows).sublime-keymap F5/F6/F7 + tab bindings
 ├── Preferences.sublime-settings         Shared cross-platform preferences
 ├── *.sublime-settings                   Per-syntax settings (JSON, Plain Text, ...)
-├── prose_toggles.py / typewriter_center.py  Keybinding command implementations
+├── prose_toggles.py                     F5/F6/F7 command implementations
 ├── polyos_auto_sync.py                  User-profile auto-sync plugin
 ├── profile/                             Applied into Packages/User by the plugin
 ├── Examples.md                          Interactive feature reference
