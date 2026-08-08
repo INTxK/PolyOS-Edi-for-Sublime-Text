@@ -2,16 +2,18 @@
 Author: Muhammad Mustafa Monowar
 Updated: 2026-08-08
 Target: Sublime-Text
-Version: v.3.1.0
+Version: v.3.2.0
 ---
 
-# PolyMark — Setup & Customization Guide
+# PolyOS Editor for Sublime Text — Setup & Customization Guide
 
-PolyMark is a color scheme and syntax highlighting rule set for Sublime Text,
-part of the PolyOS ecosystem. The syntax file (`polymark.sublime-syntax`)
-classifies text into scopes; the color scheme (`polymark.sublime-color-scheme`)
-paints those scopes. Together they highlight Markdown-flavored notes that mix
-plain prose with dates, to-dos, tags, statuses, filenames and more.
+PolyOS Editor bundles the PolyOS editor suite for Sublime Text: the **PolyMark**
+syntax + color scheme (this guide), the **PolyOS Editor Dark** UI theme, and the
+**ProseMode** focused writing color scheme. The syntax file
+(`polymark.sublime-syntax`) classifies text into scopes; the color scheme
+(`polymark.sublime-color-scheme`) paints those scopes. Together they highlight
+Markdown-flavored notes that mix plain prose with dates, to-dos, tags, statuses,
+filenames and more.
 
 For a visual tour of every feature, open `Examples.md` with PolyMark active.
 This guide covers setup, activation and customization.
@@ -20,8 +22,10 @@ This guide covers setup, activation and customization.
 
 | File                          | Purpose                                        |
 | ----------------------------- | ---------------------------------------------- |
-| `polymark.sublime-syntax`     | Syntax rules — which patterns get scopes       |
-| `polymark.sublime-color-scheme` | Colors — one rule per feature, labelled A#/E# |
+| `polymark.sublime-syntax`     | PolyMark syntax rules — which patterns get scopes |
+| `polymark.sublime-color-scheme` | PolyMark colors — one rule per feature, labelled A#/E# |
+| `ProseMode.sublime-color-scheme` | Focused monochrome color scheme for writing |
+| `PolyOS Editor Dark.sublime-theme` | PolyOS Editor Dark UI theme (+ `assets/`) |
 | `Examples.md`                 | Interactive feature reference / verification   |
 | `Instructions.md`             | This guide                                     |
 | `README.md`                   | Landing page and quick install                 |
@@ -37,11 +41,20 @@ This guide covers setup, activation and customization.
 
 ## Install
 
+### Via Package Control
+
+1. `Cmd+Shift+P` → `Package Control: Add Repository` and paste:
+   `https://github.com/INTxK/PolyOS-Edi-for-Sublime-Text`
+2. `Package Control: Install Package` → select `PolyOS-Edi-for-Sublime-Text`.
+
+### Manually
+
 1. Open `Preferences > Browse Packages...` to find your packages directory:
    - Windows: `%APPDATA%\Sublime Text\Packages\`
    - macOS: `~/Library/Application Support/Sublime Text/Packages/`
-2. Copy the whole `PolyMark` folder into that directory, so the layout is:
-   `Packages/PolyMark/polymark.sublime-syntax`
+2. Copy the whole `PolyOS-Edi-for-Sublime-Text` folder into that directory, so
+   the layout is:
+   `Packages/PolyOS-Edi-for-Sublime-Text/polymark.sublime-syntax`
 3. Restart Sublime Text (or let it pick the files up automatically).
 
 No other configuration is required for the syntax and color scheme to work.
@@ -62,8 +75,8 @@ To reproduce the reference setup, set the following in your user preferences:
   "font_size": 14,
   "font_face": "JetBrains Mono",
   "font_options": ["dlig", "calt", "directwrite", "subpixel_antialias"],
-  "color_scheme": "Packages/PolyMark/polymark.sublime-color-scheme",
-  "default_syntax": "Packages/PolyMark/polymark.sublime-syntax"
+  "color_scheme": "Packages/PolyOS-Edi-for-Sublime-Text/polymark.sublime-color-scheme",
+  "default_syntax": "Packages/PolyOS-Edi-for-Sublime-Text/polymark.sublime-syntax"
 }
 ```
 

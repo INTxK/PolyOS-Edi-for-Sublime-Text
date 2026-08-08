@@ -8,7 +8,7 @@
 # Author : Muhammad Mustafa Monowar
 # Updated: 2026-08-06
 # Target : Sublime-Text
-# Version: v.3.1.0
+# Version: v.3.2.0
 # -----------------------------------------------------------------------------
 #
 # PolyMark is a Color Scheme and Syntax Highlighting rule set for Sublime Text,
@@ -175,7 +175,7 @@ contexts:
 
     # E14. Email Address Pattern (name@provider.com)
     # MUST precede Filename (E18): E18 would otherwise absorb the whole address
-    # as a "filename" (e.g. name@example.com).
+    # as a "filename" (e.g. hasan@gmail.com).
     - include: email
 
     # E17. Project-management task statuses (- [/], - [!], - [?], - [-])

@@ -1,25 +1,21 @@
-# PolyMark
+# PolyOS Editor for Sublime Text
 
-> **v.3.1.0** — Updated 2026-08-08
+> **v.3.2.0** — Updated 2026-08-08
 
-A custom syntax and color scheme for Sublime Text, compatible with PolyOS.
-Highlight dates, to-dos, tags, statuses, filenames and more in plain `.md`,
-`.txt` and `.pm` files.
+A single package that bundles the PolyOS editor suite for Sublime Text 4:
 
-## Quick install
+| Sub-package | What it ships |
+| ----------- | ------------- |
+| **PolyMark** | Custom syntax + color scheme for `.md`, `.txt` and `.pm`. Highlights dates, to-dos, tags, statuses, filenames and more. |
+| **PolyOS Editor Dark** | UI theme (`PolyOS Editor Dark.sublime-theme` + `assets/`). Reads the active color scheme's `accent`/kind hooks so PolyMark and ProseMode re-tint the UI chrome automatically. |
+| **ProseMode** | Focused monochrome color scheme for distraction-free writing. |
 
-Drop this `PolyMark` folder into your Sublime Text packages directory:
+## Install via Package Control
 
-- Windows: `%APPDATA%\Sublime Text\Packages\`
-- macOS: `~/Library/Application Support/Sublime Text/Packages/`
-
-Access it via `Preferences > Browse Packages...`.
-
-### Install via Package Control
-
-> **Note:** the package is installed under the name **PolyOS-Edi-for-Sublime-Text**
+> **Note:** the package installs under the name **PolyOS-Edi-for-Sublime-Text**
 > (its repository name), and appears as such in `Preferences > Package Control >
-> List Packages`. The syntax/color-scheme labels inside stay "PolyMark".
+> List Packages`. The syntax/color-scheme/theme labels inside stay distinct
+> ("PolyMark", "ProseMode", "PolyOS Editor Dark").
 
 1. Open `Command Palette` (`Ctrl+Shift+P` / `Cmd+Shift+P`).
 2. Run `Package Control: Add Repository` and paste:
@@ -29,15 +25,22 @@ Access it via `Preferences > Browse Packages...`.
 
 Once installed, Sublime Text reads the package from `Packages/PolyOS-Edi-for-
 Sublime-Text/` (`Preferences > Browse Packages...`). The prebuilt
-`dist/PolyMark.sublime-package` archive holds the same six files for users who
-prefer installing a single `.sublime-package`.
+`dist/PolyOS-Edi-for-Sublime-Text.sublime-package` archive holds the same files
+for users who prefer installing a single `.sublime-package`.
+
+## Manual install
+
+Drop the folder into your Sublime Text packages directory so the resources sit
+at `Packages/PolyOS-Edi-for-Sublime-Text/`:
+
+- Windows: `%APPDATA%\Sublime Text\Packages\`
+- macOS: `~/Library/Application Support/Sublime Text/Packages/`
 
 ## Quick start
 
 1. Open a `.md`, `.txt` or `.pm` file — PolyMark selects itself as the syntax.
-2. `Ctrl+Shift+P` / `Cmd+Shift+P` → `UI: Select Color Scheme > PolyMark`.
-
-No other configuration is required for the resources to work.
+2. `Cmd+Shift+P` → `UI: Select Color Scheme > PolyMark` (or `ProseMode`).
+3. Enable the theme via `Preferences > Theme > PolyOS Editor Dark`.
 
 > **Note:** because PolyMark auto-selects for `.txt`, it becomes the default
 > syntax for every plain-text file. If you don't want that, delete the `txt`
@@ -92,21 +95,15 @@ extension point — are documented in the **PARAMETERS** sections at the top of
 ## Files
 
 ```
-├── polymark.sublime-syntax            Syntax rules (scopes every feature)
-├── polymark.sublime-color-scheme      Color scheme (paints those scopes)
-├── Examples.md                        Interactive feature reference
-├── Instructions.md                    Setup & customization guide
-└── LICENSE                            MIT License
+├── polymark.sublime-syntax              Syntax rules (scopes every feature)
+├── polymark.sublime-color-scheme        Color scheme (paints those scopes)
+├── ProseMode.sublime-color-scheme       Focused writing color scheme
+├── PolyOS Editor Dark.sublime-theme     UI theme
+├── assets/                              Theme assets (2x PNGs)
+├── Examples.md                          Interactive feature reference
+├── Instructions.md                      Setup & customization guide
+└── LICENSE                              MIT License
 ```
-
-## Support
-
-PolyMark is free and open source (MIT). If it saves you time, you can support
-future development at any of these:
-
-- Gumroad — https://gumroad.com/YOUR_HANDLE
-- Lemon Squeezy — https://lemonsqueezy.com/YOUR_HANDLE
-- Payoneer — https://payoneer.com/YOUR_LINK
 
 ## License
 
