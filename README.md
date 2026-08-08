@@ -1,6 +1,6 @@
 # PolyOS Editor for Sublime Text
 
-> **v.3.3.5** — Updated 2026-08-09
+> **v.3.3.6** — Updated 2026-08-09
 
 A single package that bundles the PolyOS editor suite for Sublime Text 4,
 including keybindings, shared preferences, and an auto-sync plugin for your
@@ -37,7 +37,9 @@ old `Packages/User/polymark.sublime-syntax` / `Packages/PolyMark/...` paths,
 which made Sublime log `Error loading syntax file ... Unable to stat` on every
 launch. Such views are rewritten to the current
 `Packages/PolyOS-Edi-for-Sublime-Text/polymark.sublime-syntax`, so the error
-stops after one launch.
+stops after one launch. Buffers restored later from a saved project workspace
+are repaired the moment they load, so the error cannot reappear from a
+workspace either.
 
 ## Install via Package Control
 

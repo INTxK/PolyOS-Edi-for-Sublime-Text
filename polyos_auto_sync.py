@@ -165,17 +165,34 @@ def apply_profile(force=False):
     sublime.status_message(msg)
 
 
+def _repair_view(view):
+    # A view may still point at a pre-bundle syntax path that no longer exists,
+    # making Sublime log "Error loading syntax file ... Unable to stat". Rewrite
+    # it to the current path; the corrected setting is saved back into the
+    # session/workspace on exit.
+    syntax = view.settings().get("syntax")
+    if syntax in _STALE_SYNTAX_PATHS:
+        view.set_syntax_file(_CURRENT_SYNTAX)
+        print("[PolyOS] repaired stale syntax: %s -> %s" % (syntax, _CURRENT_SYNTAX))
+        return True
+    return False
+
+
 def _repair_stale_syntax_references():
-    # Views restored from a pre-bundle session may still point at syntax paths
-    # that no longer exist, making Sublime log "Error loading syntax file ...
-    # Unable to stat" on every startup. Rewrite them to the current path; the
-    # corrected setting is saved back into the session on exit.
+    # Views restored from a pre-bundle session at startup (these do not fire
+    # on_load) are covered by the periodic sweep and plugin_loaded; views
+    # opened later are covered by the ViewEventListener below.
     for window in sublime.windows():
         for view in window.views():
-            syntax = view.settings().get("syntax")
-            if syntax in _STALE_SYNTAX_PATHS:
-                view.set_syntax_file(_CURRENT_SYNTAX)
-                print("[PolyOS] repaired stale syntax: %s -> %s" % (syntax, _CURRENT_SYNTAX))
+            _repair_view(view)
+
+
+class PolyosStaleSyntaxRepair(sublime_plugin.ViewEventListener):
+    # A buffer restored from a saved project workspace after startup carries the
+    # stale syntax in its settings and logs the error the moment it loads. Repair
+    # it as soon as it materializes instead of waiting for the next periodic pass.
+    def on_load_async(self):
+        _repair_view(self.view)
 
 
 def _schedule_next_check(interval):
