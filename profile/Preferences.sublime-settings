@@ -6,14 +6,27 @@
     Target: Sublime Text
     Version: v3.3.1
     ---
-    PolyMark System Preferences
+    PolyOS First-Use Preferences
+
+    This file mirrors the shared Packages/PolyOS-Edi-for-Sublime-Text/
+    Preferences.sublime-settings and is applied into Packages/User/ by the
+    package's auto-sync plugin on first install / version upgrade.
+
+    Because Packages/User/Preferences.sublime-settings wins over every
+    package's own Preferences.sublime-settings, writing these keys into
+    User/ guarantees the PolyOS look even on machines that already carry
+    stock preferences (theme "auto", Mariana scheme, ...). The plugin MERGES
+    into the existing file, so any unrelated user settings are preserved.
+
+    Keys defined here must NOT be redefined in the profile's platform files
+    (Preferences (OSX|Windows).sublime-settings), otherwise the platform
+    value would be overridden.
   */
 
   "font_size": 16,
   "font_face": "JetBrains Mono",
   // Cross-platform font options. Windows adds `directwrite` and
-  // `subpixel_antialias` via the profile's `Preferences (Windows).sublime-settings`,
-  // which the auto-sync plugin applies into Packages/User.
+  // `subpixel_antialias` via the profile's `Preferences (Windows).sublime-settings`.
   "font_options": [
     "dlig",
     "calt"

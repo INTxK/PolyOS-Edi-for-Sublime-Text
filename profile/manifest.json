@@ -1,6 +1,7 @@
 {
-  "version": "3.3.0",
+  "version": "3.3.1",
   "files": [
+    "Preferences.sublime-settings",
     "Package Control.sublime-settings",
     "Preferences (OSX).sublime-settings",
     "Preferences (Windows).sublime-settings"

@@ -53,6 +53,17 @@ def _merge_package_control(profile):
     return merged
 
 
+def _merge_user_preferences(profile):
+    # User/Preferences.sublime-settings wins over every package Preferences,
+    # so the profile's shared keys must be layered into the existing file.
+    # Unrelated user settings are preserved; profile keys win on version bump
+    # so a fresh install/upgrade lands the PolyOS look on first sync.
+    existing = _load_json(_user_path("Preferences.sublime-settings")) or {}
+    merged = dict(existing)
+    merged.update(profile)
+    return merged
+
+
 def _apply_profile_file(name, content):
     if name == "Package Control.sublime-settings":
         try:
@@ -61,6 +72,14 @@ def _apply_profile_file(name, content):
             print("[PolyOS] profile: invalid Package Control.sublime-settings, skipped")
             return False
         merged = _merge_package_control(profile)
+        ok = _write_json(_user_path(name), merged)
+    elif name == "Preferences.sublime-settings":
+        try:
+            profile = sublime.decode_value(content)
+        except ValueError:
+            print("[PolyOS] profile: invalid Preferences.sublime-settings, skipped")
+            return False
+        merged = _merge_user_preferences(profile)
         ok = _write_json(_user_path(name), merged)
     else:
         ok = _write_json(_user_path(name), sublime.decode_value(content))

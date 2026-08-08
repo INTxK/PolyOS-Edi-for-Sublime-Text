@@ -1,6 +1,6 @@
 # PolyOS Editor for Sublime Text
 
-> **v.3.3.0** — Updated 2026-08-08
+> **v.3.3.1** — Updated 2026-08-08
 
 A single package that bundles the PolyOS editor suite for Sublime Text 4,
 including keybindings, shared preferences, and an auto-sync plugin for your
@@ -19,12 +19,17 @@ in this repository, the installed package upgrades itself (checked at startup
 and every 4 hours by default). No terminal or sync scripts required.
 
 The bundled **auto-sync plugin** (`polyos_auto_sync.py`) keeps the parts
-Package Control can't manage — your `Packages/User` platform preferences and
-the `Package Control.sublime-settings` baseline — in sync across devices. It
+Package Control can't manage — your `Packages/User` preferences and the
+`Package Control.sublime-settings` baseline — in sync across devices. It
 applies the package's `profile/` folder to `Packages/User` at startup, every 4
-hours, or on demand via `PolyOS: Sync Profile Now`. `Package Control
-.sublime-settings` is merged (never clobbered), so packages you installed
-yourself are preserved.
+hours, or on demand via `PolyOS: Sync Profile Now`.
+
+The PolyOS look is **use-ready on install**: the profile merges the shared
+preferences (theme, color scheme, default syntax, fonts, caret) into your
+`Packages/User/Preferences.sublime-settings`, so it wins over any stock
+preferences — while preserving unrelated settings you already had.
+`Package Control.sublime-settings` is merged (never clobbered), so packages you
+installed yourself are preserved.
 
 ## Install via Package Control
 
