@@ -14,6 +14,16 @@ STARTUP_DELAY_MS = 15000
 # owned by Package Control and left untouched.
 _AUTHORED_KEYS = ("repositories", "installed_packages")
 
+# Syntax resource paths from older PolyOS layouts that no longer exist. Views
+# restored from a stale session carry one of these and make Sublime log
+# "Error loading syntax file ... Unable to stat" on every startup. The plugin
+# rewrites them to the current path (see _repair_stale_syntax_references).
+_CURRENT_SYNTAX = "Packages/" + PACKAGE_NAME + "/polymark.sublime-syntax"
+_STALE_SYNTAX_PATHS = (
+    "Packages/User/polymark.sublime-syntax",       # "first try" layout (a641bb7)
+    "Packages/PolyMark/polymark.sublime-syntax",   # custom-packages layout (4c54317..v3.2.x)
+)
+
 
 def _user_path(name):
     return os.path.join(sublime.packages_path(), "User", name)
@@ -155,6 +165,19 @@ def apply_profile(force=False):
     sublime.status_message(msg)
 
 
+def _repair_stale_syntax_references():
+    # Views restored from a pre-bundle session may still point at syntax paths
+    # that no longer exist, making Sublime log "Error loading syntax file ...
+    # Unable to stat" on every startup. Rewrite them to the current path; the
+    # corrected setting is saved back into the session on exit.
+    for window in sublime.windows():
+        for view in window.views():
+            syntax = view.settings().get("syntax")
+            if syntax in _STALE_SYNTAX_PATHS:
+                view.set_syntax_file(_CURRENT_SYNTAX)
+                print("[PolyOS] repaired stale syntax: %s -> %s" % (syntax, _CURRENT_SYNTAX))
+
+
 def _schedule_next_check(interval):
     sublime.set_timeout(lambda: _periodic_check(interval), interval * 1000)
 
@@ -162,11 +185,13 @@ def _schedule_next_check(interval):
 def _periodic_check(interval):
     try:
         apply_profile()
+        _repair_stale_syntax_references()
     finally:
         _schedule_next_check(interval)
 
 
 def plugin_loaded():
+    _repair_stale_syntax_references()
     sublime.set_timeout(
         lambda: _periodic_check(DEFAULT_INTERVAL_SECONDS),
         STARTUP_DELAY_MS)

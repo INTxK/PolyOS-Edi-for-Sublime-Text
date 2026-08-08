@@ -1,6 +1,6 @@
 # PolyOS Editor for Sublime Text
 
-> **v.3.3.4** — Updated 2026-08-08
+> **v.3.3.5** — Updated 2026-08-09
 
 A single package that bundles the PolyOS editor suite for Sublime Text 4,
 including keybindings, shared preferences, and an auto-sync plugin for your
@@ -30,6 +30,14 @@ preferences (theme, color scheme, default syntax, fonts, caret) into your
 preferences — while preserving unrelated settings you already had.
 `Package Control.sublime-settings` is merged (never clobbered), so packages you
 installed yourself are preserved.
+
+On startup the plugin also **self-heals stale syntax references**: views
+restored from a session created by an older PolyOS layout can still point at the
+old `Packages/User/polymark.sublime-syntax` / `Packages/PolyMark/...` paths,
+which made Sublime log `Error loading syntax file ... Unable to stat` on every
+launch. Such views are rewritten to the current
+`Packages/PolyOS-Edi-for-Sublime-Text/polymark.sublime-syntax`, so the error
+stops after one launch.
 
 ## Install via Package Control
 
