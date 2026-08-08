@@ -1,4 +1,4 @@
-## PolyMark v3.0.2 — installed
+## PolyMark v3.1.0 — installed
 
 Thank you for installing PolyMark. It is free and open source (MIT).
 

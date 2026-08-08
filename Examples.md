@@ -1,6 +1,6 @@
 # PolyMark Feature Reference
 
-> **v.3.0.2** — Updated 2026-08-05
+> **v.3.1.0** — Updated 2026-08-08
 
 > Every construct below is live — open this file in Sublime Text with the
 > PolyMark syntax and color scheme active, and each sample renders in its
@@ -182,7 +182,7 @@ A full six-part timestamp, aquamarine.
 
 The user name, `@` and domain are bold ash gray.
 
-hasan@gmail.com
+name@example.com
 
 ### E15. Inline status markers ([?], [!])
 

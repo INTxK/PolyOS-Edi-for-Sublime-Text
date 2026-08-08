@@ -1,6 +1,6 @@
 # PolyMark
 
-> **v.3.0.2** — Updated 2026-08-05
+> **v.3.1.0** — Updated 2026-08-08
 
 A custom syntax and color scheme for Sublime Text, compatible with PolyOS.
 Highlight dates, to-dos, tags, statuses, filenames and more in plain `.md`,
@@ -17,17 +17,17 @@ Access it via `Preferences > Browse Packages...`.
 
 ### Install via Package Control
 
-> **Note:** the package is installed under the name **PolyMark-for-Sublime-Text**
+> **Note:** the package is installed under the name **PolyOS-Edi-for-Sublime-Text**
 > (its repository name), and appears as such in `Preferences > Package Control >
 > List Packages`. The syntax/color-scheme labels inside stay "PolyMark".
 
 1. Open `Command Palette` (`Ctrl+Shift+P` / `Cmd+Shift+P`).
 2. Run `Package Control: Add Repository` and paste:
-   `https://github.com/INTxK/PolyMark-for-Sublime-Text`
+   `https://github.com/INTxK/PolyOS-Edi-for-Sublime-Text`
 3. Run `Package Control: Install Package` and select
-   `PolyMark-for-Sublime-Text`.
+   `PolyOS-Edi-for-Sublime-Text`.
 
-Once installed, Sublime Text reads the package from `Packages/PolyMark-for-
+Once installed, Sublime Text reads the package from `Packages/PolyOS-Edi-for-
 Sublime-Text/` (`Preferences > Browse Packages...`). The prebuilt
 `dist/PolyMark.sublime-package` archive holds the same six files for users who
 prefer installing a single `.sublime-package`.
